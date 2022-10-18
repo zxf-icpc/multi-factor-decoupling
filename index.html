@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://leiyi420.github.io/HierarchicalEmoTTS/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>MULTI-SPEAKER EXPRESSIVE SPEECH SYNTHESIS VIA MULTIPLE FACTORS DECOUPLING</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title" content="TODO: title">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://leiyi420.github.io/CSEmoTransfer">
+  <meta property="og:url" content="https://leiyi420.github.io/CSEmoTransfer">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+  <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+
+
+  </section>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>MULTI-SPEAKER EXPRESSIVE SPEECH SYNTHESIS VIA MULTIPLE FACTORS DECOUPLING</center>
+    </h1>
+
+    <center> Xinfa Zhu, Yi Lei, Lei Xie </center>
+    <center> Northwestern Polytechnical University </center>
+    <!-- <center> Tencent AI Lab </center> -->
+
+    <h2>0. Contents</h2>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <!-- <li><a href="#transfer">Examples of information perturbation</a></li> -->
+      <li><a href="#prediction">Demos -- expressive speech with a specific style and emotion for seen target
+          speakers</a></li>
+      <li><a href="#control">Demos -- expressive speech with a specific style and emotion for unseen target speakers</a>
+      </li>
+
+    </ol>
+
+    <br><br>
+    <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+    <p> Cross-speaker emotion transfer is an effective way to produce expressive speech for neutral target speakers,
+      which doesn't require emotional training data of target speakers. Since the emotion and timbre of the source
+      speaker are heavily entangled, existing approaches often struggle to trade off the speaker similarity and the
+      emotion expressions.
+      In this paper, we propose to disentangle the timbre and the emotion of speech through information perturbation to
+      conduct cross-speaker emotion transfer, which effectively learns the emotion expressions of the source speaker and
+      maintains the timbre of the target neutral speakers. Specifically, we perturb the timbre and emotion information
+      (e.g., formant and pitch) of source speech separately to obtain and model the emotion- and timbre-independent
+      signals, based on which the proposed model could further produce emotional speech in the timbre of target
+      speakers. Experiment results demonstrate that the proposed approach significantly outperforms the baseline models
+      in terms of naturalness and similarity, indicating the effectiveness of information perturbation for cross-speaker
+      emotion transfer.
+    </p>
+    <center><img src='fig/architecture.jpg'></center>
+    <br><br>
+
+
+    <h2>2. Demos -- expressive speech with a specific style and emotion for seen target speakers<a
+        name="prediction"></a></h2>
+    <h3>Convert the emotion and style expresssions from different source speakers to the neutral target speakers without
+      emotional and stylistic training data.</h3>
+
+    <p><b>Target speaker: M1 </b></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>Emotion</strong></th>
+          <th style="text-align: center"><strong>Target style example</strong></th>
+          <th style="text-align: center"><strong>Target emotion example</strong></th>
+          <th style="text-align: center"><strong>Target speaker example</strong></th>
+          <th style="text-align: center"><strong>MR-Tacotron</strong></th>
+          <th style="text-align: center"><strong>Referee</strong></th>
+          <th style="text-align: center"><strong>Proposed</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 长风破浪会有时，直挂云帆济沧海。(English: Someday, with my sail piercing the
+            clouds; I will mount the wind, break the waves, and traverse the vast, rolling sea.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/92_02_13.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 君不见，高堂明镜悲白发，朝如青丝暮成雪。(English: Don't you see? sadly, the high hall
+            mirror saw white hair, as black as green hair in the morning and as white as snow in the evening.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/93_02_10.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/93_02_10.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/93_02_10.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 天生我材必有用，千金散尽还复来。(English: Heaven has made us talents, we're not
+            made in vain. A thousand gold coins spent, more will turn up again.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/02_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/02_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/02_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 从此山河两相阅，缠尽青山尝清河。(English: From then on, the mountains and rivers
+            read each other and wrapped around the green mountains to taste the Qinghe River.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/94_02_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/94_02_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/94_02_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 山不厌高，海不厌深。周公吐哺，天下归心。(English: The water can never be too deep,
+            and the mountain too high. The Duke of Zhou spits and feeds, and the world returns to the heart.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/02_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/02_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/02_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/92_03_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/92_03_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/92_03_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/93_03_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/93_03_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/93_03_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her
+            heart and tongue as proof that you killed her.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/90_03_16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there
+            were seven small beds neatly arranged inside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/94_03_19.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/94_03_19.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/94_03_19.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry
+            of an owl, felt more and more terrible in the forest as she walked.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/91_03_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were
+            overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is auspicious!" the
+            Empress Dowager is holy! the Empress Dowager is mighty! ")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/92_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/92_05_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/92_05_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/93_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/93_05_12.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/93_05_12.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Angry</td>
+          <td style="text-align: left" colspan=6>Text: "气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so
+            angry! mother! Wu Dehou killed his elder brother, what are we waiting for? quickly order his whole family to
+            be killed and avenge his brother!")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/90_05_3.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Surprise
+          </td>
+          <td style="text-align: left" colspan=6>Text: 惊呼，武德侯有功与国家，太后万万不可呀！(English: Exclaimed, Wu de Hou meritorious
+            service to the country, the Empress Dowager must not!)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/94_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/94_05_18.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/94_05_18.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came
+            forward and said in a trembling voice, "this …"... what on earth is going on? why are the officers and
+            soldiers here? ")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/91_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/91_05_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/91_05_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <!-- <p><b>Short summary:</b> When the target neutral speaker is male, the FS2-GST and FS2-VAE cannot produce correct
+      timbre, although the genereted speech is emotional. Besides, FS2-BN sometimes also cannot generate male voice. The
+      proposed model could successfully maintain the target timbre when generating emotional speech.</p> -->
+
+    <p><b>Target speaker: F1 </b></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>Emotion</strong></th>
+          <th style="text-align: center"><strong>Target style example</strong></th>
+          <th style="text-align: center"><strong>Target emotion example</strong></th>
+          <th style="text-align: center"><strong>Target speaker example</strong></th>
+          <th style="text-align: center"><strong>MR-Tacotron</strong></th>
+          <th style="text-align: center"><strong>Referee</strong></th>
+          <th style="text-align: center"><strong>Proposed</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 长风破浪会有时，直挂云帆济沧海。(English: Someday, with my sail piercing the
+            clouds; I will mount the wind, break the waves, and traverse the vast, rolling sea.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/272_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/272_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/272_02_13.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 君不见，高堂明镜悲白发，朝如青丝暮成雪。(English: Don't you see? sadly, the high hall
+            mirror saw white hair, as black as green hair in the morning and as white as snow in the evening.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/273_02_10.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/273_02_10.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/273_02_10.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 天生我材必有用，千金散尽还复来。(English: Heaven has made us talents, we're not
+            made in vain. A thousand gold coins spent, more will turn up again.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/270_02_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/270_02_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/270_02_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 从此山河两相阅，缠尽青山尝清河。(English: From then on, the mountains and rivers
+            read each other and wrapped around the green mountains to taste the Qinghe River.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/274_02_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/274_02_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/274_02_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 山不厌高，海不厌深。周公吐哺，天下归心。(English: The water can never be too deep,
+            and the mountain too high. The Duke of Zhou spits and feeds, and the world returns to the heart.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/92_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/271_02_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/271_02_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/271_02_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/272_03_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/272_03_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/272_03_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/273_03_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/273_03_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/273_03_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her
+            heart and tongue as proof that you killed her.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there
+            were seven small beds neatly arranged inside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/274_03_19.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/274_03_19.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/274_03_19.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry
+            of an owl, felt more and more terrible in the forest as she walked.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/91_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/271_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/271_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/271_03_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were
+            overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is auspicious!" the
+            Empress Dowager is holy! the Empress Dowager is mighty! ")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/272_05_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/272_05_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/273_05_12.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Angry</td>
+          <td style="text-align: left" colspan=6>Text: "气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so
+            angry! mother! Wu Dehou killed his elder brother, what are we waiting for? quickly order his whole family to
+            be killed and avenge his brother!")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/270_05_3.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/270_05_3.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Surprise
+          </td>
+          <td style="text-align: left" colspan=6>Text: 惊呼，武德侯有功与国家，太后万万不可呀！(English: Exclaimed, Wu de Hou meritorious
+            service to the country, the Empress Dowager must not!)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/274_05_18.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Storytelling + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came
+            forward and said in a trembling voice, "this …"... what on earth is going on? why are the officers and
+            soldiers here? ")</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/90_05_3.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/MR-tacotron/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Referee/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/Proposed/271_05_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <!-- <p><b>Short summary:</b> The results indicate the effectiveness of our proposed method can successfully transfer the
+      source emotion to the target speaker while maintaining the target speaker's timbre.</p> -->
+
+    <br><br>
+    <h2>3. Demos -- expressive speech with a specific style and emotion for low-quality speech in few-shot speaker
+      adaptation<a name="control"></a></h2>
+    <h3>Apply the proposed method to the low-quality speech in few-shot speaker adaptation. We synthesize long segments
+      of speech to feel style attributes and emotional changes.</h3>
+    <table>
+      <thead>
+        <tr>
+          <!-- <th style="text-align: center"><strong>Speaker</strong></th> -->
+          <th style="text-align: center"><strong>Style</strong></th>
+          <th style="text-align: center"><strong>Text</strong></th>
+          <th style="text-align: center"><strong>Target speaker</strong></th>
+          <th style="text-align: center"><strong>Generated wave</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- <td style="text-align: left">F1</td> -->
+          <td style="text-align: left">Fairytales</td>
+          <td style="text-align: left">
+            （happy）不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)<br />
+            （happy）白雪公主非常善良，有爱心，她经常和动物一起玩耍。(English: Snow White is very kind and caring. She often plays with
+            animals.)<br />
+            （sad）可是，好景不长，白雪公主的母亲生病去世了。(English: But the good times didn't last long. Snow White's mother got sick and
+            died.)<br />
+            （sad）国王向白雪公主介绍新王后时，她还正为死去的母后感到悲伤呢。(English: When the king introduced the new queen to Snow White, she was
+            still grieving for her dead mother.)<br />
+            （angry）于是，她就命令宫廷的武士说，我不想再看到白雪公主了。(English: So she ordered the samurai of the court to say, I don't want to
+            see Snow White anymore.)<br />
+            （angry）给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her heart and tongue as proof that you
+            killed her.)<br />
+            （fear）听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry of an owl, felt more and more terrible
+            in the forest as she walked.)<br />
+            （surprise）突然，眼前有一栋小木屋，于是便又惊又喜的叫着，啊，是小木屋。(English: Suddenly, there was a cabin in front of him, so he shouted
+            with surprise and delight, Oh, it's a cabin.)<br />
+            （surprise）进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there were seven small beds neatly
+            arranged in it.)</td>
+          <td style="text-align: left"><audio src="subjective/few-shot/male/33.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/few-shot/male/style+emotion2.wav" controls=""
+              preload=""></audio></td>
+        </tr>
+        <tr>
+          <!-- <td style="text-align: left">F1</td> -->
+          <td style="text-align: left">Fairytales</td>
+          <td style="text-align: left">
+            （happy）不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)<br />
+            （happy）白雪公主非常善良，有爱心，她经常和动物一起玩耍。(English: Snow White is very kind and caring. She often plays with
+            animals.)<br />
+            （sad）可是，好景不长，白雪公主的母亲生病去世了。(English: But the good times didn't last long. Snow White's mother got sick and
+            died.)<br />
+            （sad）国王向白雪公主介绍新王后时，她还正为死去的母后感到悲伤呢。(English: When the king introduced the new queen to Snow White, she was
+            still grieving for her dead mother.)<br />
+            （angry）于是，她就命令宫廷的武士说，我不想再看到白雪公主了。(English: So she ordered the samurai of the court to say, I don't want to
+            see Snow White anymore.)<br />
+            （angry）给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her heart and tongue as proof that you
+            killed her.)<br />
+            （fear）听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry of an owl, felt more and more terrible
+            in the forest as she walked.)<br />
+            （surprise）突然，眼前有一栋小木屋，于是便又惊又喜的叫着，啊，是小木屋。(English: Suddenly, there was a cabin in front of him, so he shouted
+            with surprise and delight, Oh, it's a cabin.)<br />
+            （surprise）进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there were seven small beds neatly
+            arranged in it.)</td>
+          <td style="text-align: left"><audio src="subjective/few-shot/female/46.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/few-shot/female/style+emotion2.wav" controls=""
+              preload=""></audio></td>
+        </tr>
+        <tr>
+          <!-- <td style="text-align: left">F1</td> -->
+          <td style="text-align: left">Storytelling</td>
+          <td style="text-align: left">
+            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died tragically, and the city was filled with grief.)<br />
+            （angry）只见一名少年急急奔上台阶，生气的说。(English: A teenager rushed up the steps and said angrily.)<br />
+            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge his brother!")<br />
+            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip, raised her trembling hand and waved it gently.)<br />
+            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is mighty!")<br />
+            （happy）皇上终于可以瞑目了。(English: The emperor can finally rest in peace.)<br />
+            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or in the cellar.)<br />
+            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted, "dismount! dismount me!")<br />
+            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every crash knocked into the depths of their hearts, as if to break their hearts.)<br />
+            （sad）几个妇人挤在一起，泣不成声。(English: Several women huddled together and burst into tears.)<br />
+            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
+            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news from the front yesterday that the expedition had failed miserably.")</td>
+          <td style="text-align: left"><audio src="subjective/few-shot/male/33.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/few-shot/male/style+emotion1.wav" controls=""
+              preload=""></audio></td>
+        </tr>
+        <tr>
+          <!-- <td style="text-align: left">F1</td> -->
+          <td style="text-align: left">Storytelling</td>
+          <td style="text-align: left">
+            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died tragically, and the city was filled with grief.)<br />
+            （angry）只见一名少年急急奔上台阶，生气的说。(English: A teenager rushed up the steps and said angrily.)<br />
+            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge his brother!")<br />
+            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip, raised her trembling hand and waved it gently.)<br />
+            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is mighty!")<br />
+            （happy）皇上终于可以瞑目了。(English: The emperor can finally rest in peace.)<br />
+            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or in the cellar.)<br />
+            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted, "dismount! dismount me!")<br />
+            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every crash knocked into the depths of their hearts, as if to break their hearts.)<br />
+            （sad）几个妇人挤在一起，泣不成声。(English: Several women huddled together and burst into tears.)<br />
+            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
+            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news from the front yesterday that the expedition had failed miserably.")</td>
+          <td style="text-align: left"><audio src="subjective/few-shot/female/46.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/few-shot/female/style+emotion1.wav" controls=""
+              preload=""></audio></td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+    <!-- <p><b>Short summary:</b> Given different speaker and emotion embedding during inference, the Speaker-mel gererator
+      could provide emotionless speech with specific timbre, while the output of the Emotion-mel gererator contains the
+      emotion variations with random or averaged timbre. Based on the two outputs, the final generated speech has
+      specifec emotion expressions and timbre.</p> -->
+
+
+
+    <footer class="site-footer">
+
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub
+          Pages</a>.</span>
+    </footer>
+  </section>
+</body>
+
+</html>
