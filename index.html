@@ -11,8 +11,8 @@
   <meta name="generator" content="Jekyll v3.9.0">
   <meta property="og:title" content="TODO: title">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://leiyi420.github.io/CSEmoTransfer">
-  <meta property="og:url" content="https://leiyi420.github.io/CSEmoTransfer">
+  <link rel="canonical" href="https://zxf-icpc.github.io/multi-factor-decoupling/">
+  <meta property="og:url" content="https://zxf-icpc.github.io/multi-factor-decoupling/">
   <meta name="twitter:card" content="summary">
   <!-- End Jekyll SEO tag -->
 
@@ -51,18 +51,17 @@
 
     <br><br>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p> Cross-speaker emotion transfer is an effective way to produce expressive speech for neutral target speakers,
-      which doesn't require emotional training data of target speakers. Since the emotion and timbre of the source
-      speaker are heavily entangled, existing approaches often struggle to trade off the speaker similarity and the
-      emotion expressions.
-      In this paper, we propose to disentangle the timbre and the emotion of speech through information perturbation to
-      conduct cross-speaker emotion transfer, which effectively learns the emotion expressions of the source speaker and
-      maintains the timbre of the target neutral speakers. Specifically, we perturb the timbre and emotion information
-      (e.g., formant and pitch) of source speech separately to obtain and model the emotion- and timbre-independent
-      signals, based on which the proposed model could further produce emotional speech in the timbre of target
-      speakers. Experiment results demonstrate that the proposed approach significantly outperforms the baseline models
-      in terms of naturalness and similarity, indicating the effectiveness of information perturbation for cross-speaker
-      emotion transfer.
+    <p> Expressive speech synthesis, aiming at generating stylistic and emotional speech for target speakers, is widely
+      applied in human-computer interactions. Since, in many scenarios, only expressive data of some specific speakers
+      are available for learning expressiveness, cross-speaker style, or emotion transfer are critical to the
+      multi-speaker expressive speech synthesis. This paper proposes a novel framework for multi-speaker expressive
+      speech synthesis via decoupling multiple factors (style, emotion, and speaker timbre). Specifically, we leverage a
+      two-stage system using speaker-independent bottleneck (BN) features as the intermediate representations. The first
+      stage tries to produce the speaker-independent BN features in the desired style and emotion. The second stage is
+      to generate the stylistic and emotional waveform in the target speaker's timbre.Experimental results show that the
+      proposed system outperforms the compared methods, which indicates the proposed
+      system can decouple the multiple factors and flexibly recompose them for generating expressive speech of multiple
+      speakers.
     </p>
     <center><img src='fig/architecture.jpg'></center>
     <br><br>
@@ -752,18 +751,29 @@
           <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Storytelling</td>
           <td style="text-align: left">
-            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died tragically, and the city was filled with grief.)<br />
+            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died
+            tragically, and the city was filled with grief.)<br />
             （angry）只见一名少年急急奔上台阶，生气的说。(English: A teenager rushed up the steps and said angrily.)<br />
-            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge his brother!")<br />
-            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip, raised her trembling hand and waved it gently.)<br />
-            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is mighty!")<br />
+            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we
+            waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge
+            his brother!")<br />
+            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip,
+            raised her trembling hand and waved it gently.)<br />
+            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at
+            the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is
+            mighty!")<br />
             （happy）皇上终于可以瞑目了。(English: The emperor can finally rest in peace.)<br />
-            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or in the cellar.)<br />
-            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted, "dismount! dismount me!")<br />
-            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every crash knocked into the depths of their hearts, as if to break their hearts.)<br />
+            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or
+            in the cellar.)<br />
+            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted,
+            "dismount! dismount me!")<br />
+            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every
+            crash knocked into the depths of their hearts, as if to break their hearts.)<br />
             （sad）几个妇人挤在一起，泣不成声。(English: Several women huddled together and burst into tears.)<br />
-            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
-            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news from the front yesterday that the expedition had failed miserably.")</td>
+            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling
+            voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
+            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news
+            from the front yesterday that the expedition had failed miserably.")</td>
           <td style="text-align: left"><audio src="subjective/few-shot/male/33.wav" controls="" preload=""></audio></td>
           <td style="text-align: left"><audio src="subjective/few-shot/male/style+emotion1.wav" controls=""
               preload=""></audio></td>
@@ -772,18 +782,29 @@
           <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Storytelling</td>
           <td style="text-align: left">
-            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died tragically, and the city was filled with grief.)<br />
+            （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died
+            tragically, and the city was filled with grief.)<br />
             （angry）只见一名少年急急奔上台阶，生气的说。(English: A teenager rushed up the steps and said angrily.)<br />
-            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge his brother!")<br />
-            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip, raised her trembling hand and waved it gently.)<br />
-            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is mighty!")<br />
+            （angry）"气死我了！母后！武德侯害死皇兄，咱们还等什么？快快下令诛杀他全家满门，给皇兄报仇啊！"(English: "I'm so angry! Queen Mother! what are we
+            waiting for when Wu Dehou killed his brother? quickly order his whole family to be slaughtered and avenge
+            his brother!")<br />
+            （netural）良久良久，那老妇终于咬住下唇，举起颤抖不止的手，轻轻的挥了挥。(English: For a long time, the old woman finally bit her lower lip,
+            raised her trembling hand and waved it gently.)<br />
+            （happy）众大臣见状大喜，同时拜伏在地，大声道："太后吉祥！太后圣明！太后威武！"(English: The ministers were overjoyed and bowed to the ground at
+            the same time, shouting: "the Empress Dowager is lucky! the Empress Dowager is holy! the Empress Dowager is
+            mighty!")<br />
             （happy）皇上终于可以瞑目了。(English: The emperor can finally rest in peace.)<br />
-            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or in the cellar.)<br />
-            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted, "dismount! dismount me!")<br />
-            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every crash knocked into the depths of their hearts, as if to break their hearts.)<br />
+            （netural）城中百姓或躲炕下，或藏窖中，无一人敢探头张望。(English: No one in the city dared to look around either under the Kang or
+            in the cellar.)<br />
+            （angry）大军开至王府胡同，当先一将喝道："下马！快给我下马！"(English: When the army drove to Wangfu Hutong, the first general shouted,
+            "dismount! dismount me!")<br />
+            （fear）听着可怕骇人的轰天巨响，每一下撞击声都敲进他们的心窝深处，似要将他们的魂胆撞碎。(English: Listening to the terrible and terrible bang, every
+            crash knocked into the depths of their hearts, as if to break their hearts.)<br />
             （sad）几个妇人挤在一起，泣不成声。(English: Several women huddled together and burst into tears.)<br />
-            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
-            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news from the front yesterday that the expedition had failed miserably.")</td>
+            （fear）一名长者走上前来，颤声道："这……这到底是怎么回事？为何有官兵杀来？"(English: An elderly man came forward and said in a trembling
+            voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
+            （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news
+            from the front yesterday that the expedition had failed miserably.")</td>
           <td style="text-align: left"><audio src="subjective/few-shot/female/46.wav" controls="" preload=""></audio>
           </td>
           <td style="text-align: left"><audio src="subjective/few-shot/female/style+emotion1.wav" controls=""
