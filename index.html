@@ -31,10 +31,11 @@
 
   <section class="main-content">
     <h1 id="">
-      <center>MULTI-SPEAKER EXPRESSIVE SPEECH SYNTHESIS VIA MULTIPLE FACTORS DECOUPLING</center>
+      <center>MULTI-SPEAKER EXPRESSIVE SPEECH SYNTHESIS VIA MULTIPLE FACTORS
+        DECOUPLING</center>
     </h1>
 
-    <center> Xinfa Zhu, Yi Lei, Lei Xie </center>
+    <center> Xinfa Zhu, Yi Lei, kun Song, Yongmao Zhang, Tao Li, Lei Xie </center>
     <center> Northwestern Polytechnical University </center>
     <!-- <center> Tencent AI Lab </center> -->
 
@@ -42,9 +43,9 @@
     <ol>
       <li><a href="#abstract">Abstract</a></li>
       <!-- <li><a href="#transfer">Examples of information perturbation</a></li> -->
-      <li><a href="#prediction">Demos -- expressive speech with a specific style and emotion for seen target
+      <li><a href="#prediction">Demos -- expressive speech with a specific style and emotion for target
           speakers</a></li>
-      <li><a href="#control">Demos -- expressive speech with a specific style and emotion for unseen target speakers</a>
+      <!-- <li><a href="#control">Demos -- expressive speech with a specific style and emotion for unseen target speakers</a> -->
       </li>
 
     </ol>
@@ -63,11 +64,11 @@
       system can decouple the multiple factors and flexibly recompose them for generating expressive speech of multiple
       speakers.
     </p>
-    <center><img src='fig/architecture.jpg'></center>
+    <center><img src='fig/architecture.png'></center>
     <br><br>
 
 
-    <h2>2. Demos -- expressive speech with a specific style and emotion for seen target speakers<a
+    <h2>2. Demos -- expressive speech with a specific style and emotion for target speakers<a
         name="prediction"></a></h2>
     <h3>Convert the emotion and style expresssions from different source speakers to the neutral target speakers without
       emotional and stylistic training data.</h3>
@@ -678,15 +679,14 @@
     <!-- <p><b>Short summary:</b> The results indicate the effectiveness of our proposed method can successfully transfer the
       source emotion to the target speaker while maintaining the target speaker's timbre.</p> -->
 
-    <br><br>
+    <!-- <br><br>
     <h2>3. Demos -- expressive speech with a specific style and emotion for low-quality speech in few-shot speaker
       adaptation<a name="control"></a></h2>
     <h3>Apply the proposed method to the low-quality speech in few-shot speaker adaptation. We synthesize long segments
-      of speech to feel style attributes and emotional changes.</h3>
-    <table>
+      of speech to feel style attributes and emotional changes.</h3>  -->
+    <!-- <table>
       <thead>
         <tr>
-          <!-- <th style="text-align: center"><strong>Speaker</strong></th> -->
           <th style="text-align: center"><strong>Style</strong></th>
           <th style="text-align: center"><strong>Text</strong></th>
           <th style="text-align: center"><strong>Target speaker</strong></th>
@@ -695,7 +695,6 @@
       </thead>
       <tbody>
         <tr>
-          <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Fairytales</td>
           <td style="text-align: left">
             （happy）不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
@@ -721,7 +720,6 @@
               preload=""></audio></td>
         </tr>
         <tr>
-          <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Fairytales</td>
           <td style="text-align: left">
             （happy）不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
@@ -748,7 +746,6 @@
               preload=""></audio></td>
         </tr>
         <tr>
-          <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Storytelling</td>
           <td style="text-align: left">
             （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died
@@ -779,7 +776,6 @@
               preload=""></audio></td>
         </tr>
         <tr>
-          <!-- <td style="text-align: left">F1</td> -->
           <td style="text-align: left">Storytelling</td>
           <td style="text-align: left">
             （sad）皇上昨日被武德侯所害，惨死皇宫，满城悲伤。(English: The emperor was killed by Wu Dehou yesterday. The palace died
@@ -813,7 +809,7 @@
 
 
       </tbody>
-    </table>
+    </table> -->
 
     <!-- <p><b>Short summary:</b> Given different speaker and emotion embedding during inference, the Speaker-mel gererator
       could provide emotionless speech with specific timbre, while the output of the Emotion-mel gererator contains the
