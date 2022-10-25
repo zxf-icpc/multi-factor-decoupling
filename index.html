@@ -35,7 +35,7 @@
         DECOUPLING</center>
     </h1>
 
-    <center> Xinfa Zhu, Yi Lei, kun Song, Yongmao Zhang, Tao Li, Lei Xie </center>
+    <center> Xinfa Zhu, Yi Lei, Kun Song, Yongmao Zhang, Tao Li, Lei Xie </center>
     <center> Northwestern Polytechnical University </center>
     <!-- <center> Tencent AI Lab </center> -->
 
@@ -45,24 +45,27 @@
       <!-- <li><a href="#transfer">Examples of information perturbation</a></li> -->
       <li><a href="#prediction">Demos -- expressive speech with a specific style and emotion for target
           speakers</a></li>
-      <!-- <li><a href="#control">Demos -- expressive speech with a specific style and emotion for unseen target speakers</a> -->
+      <li><a href="#control">Demos -- long expressive speech with a specific style and various emotions for target
+          speakers</a>
       </li>
 
     </ol>
 
     <br><br>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p> Expressive speech synthesis, aiming at generating stylistic and emotional speech for target speakers, is widely
-      applied in human-computer interactions. Since, in many scenarios, only expressive data of some specific speakers
-      are available for learning expressiveness, cross-speaker style, or emotion transfer are critical to the
-      multi-speaker expressive speech synthesis. This paper proposes a novel framework for multi-speaker expressive
-      speech synthesis via decoupling multiple factors (style, emotion, and speaker timbre). Specifically, we leverage a
-      two-stage system using speaker-independent bottleneck (BN) features as the intermediate representations. The first
-      stage tries to produce the speaker-independent BN features in the desired style and emotion. The second stage is
-      to generate the stylistic and emotional waveform in the target speaker's timbre.Experimental results show that the
-      proposed system outperforms the compared methods, which indicates the proposed
-      system can decouple the multiple factors and flexibly recompose them for generating expressive speech of multiple
-      speakers.
+    <p> This paper aims to synthesize target speaker's speech with desired speaking style and emotion by transferring
+      the style and emotion from reference speech recorded by other speakers. Specifically, we address this challenging
+      problem with a two-stage framework composed of a text-to-style-and-emotion (Text2SE) module and a
+      style-and-emotion-to-wave (SE2Wave) module, bridging by neural
+      bottleneck (BN) features. To further solve the multi-factor (speaker timbre, speaking style and emotion)
+      decoupling problem, we adopt the multi-label binary vector (MBV) and mutual information (MI) minimization to
+      respectively discretize the extracted
+      embeddings and disentangle these highly entangled factors in both Text2SE and SE2Wave modules. Moreover, we
+      introduce a semi-supervised training strategy to leverage data from multiple speakers, including emotion-labelled
+      data, style-labelled data, and unlabeled data. To better transfer the fine-grained expressiveness from references
+      to the target speaker in the non-parallel transfer, we introduce a reference-candidate pool and propose an
+      attention based reference selection approach.
+      Extensive experiments demonstrate the good design of our model.
     </p>
     <center><img src='fig/architecture.png'></center>
     <br><br>
@@ -70,7 +73,7 @@
 
     <h2>2. Demos -- expressive speech with a specific style and emotion for target speakers<a name="prediction"></a>
     </h2>
-    <h3>Convert the emotion and style expresssions from different source speakers to the neutral target speakers without
+    <h3>Convert the emotion and style expresssions from different source speakers to the target speakers without
       emotional and stylistic training data.</h3>
 
     <p><b>Target speaker: M1 </b></p>
@@ -681,12 +684,11 @@
     <!-- <p><b>Short summary:</b> The results indicate the effectiveness of our proposed method can successfully transfer the
       source emotion to the target speaker while maintaining the target speaker's timbre.</p> -->
 
-    <!-- <br><br>
-    <h2>3. Demos -- expressive speech with a specific style and emotion for low-quality speech in few-shot speaker
-      adaptation<a name="control"></a></h2>
-    <h3>Apply the proposed method to the low-quality speech in few-shot speaker adaptation. We synthesize long segments
-      of speech to feel style attributes and emotional changes.</h3>  -->
-    <!-- <table>
+    <br><br>
+    <h2>3. Demos -- long expressive speech with a specific style and various emotions for target
+      speakers<a name="control"></a></h2>
+    <h3>We synthesize long segments of speech to help feel style attributes and emotional variation.</h3> 
+    <table>
       <thead>
         <tr>
           <th style="text-align: center"><strong>Style</strong></th>
@@ -717,8 +719,8 @@
             with surprise and delight, Oh, it's a cabin.)<br />
             （surprise）进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there were seven small beds neatly
             arranged in it.)</td>
-          <td style="text-align: left"><audio src="subjective/few-shot/male/33.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="subjective/few-shot/male/style+emotion2.wav" controls=""
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/paragraphs/91.wav" controls=""
               preload=""></audio></td>
         </tr>
         <tr>
@@ -742,9 +744,9 @@
             with surprise and delight, Oh, it's a cabin.)<br />
             （surprise）进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there were seven small beds neatly
             arranged in it.)</td>
-          <td style="text-align: left"><audio src="subjective/few-shot/female/46.wav" controls="" preload=""></audio>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
           </td>
-          <td style="text-align: left"><audio src="subjective/few-shot/female/style+emotion2.wav" controls=""
+          <td style="text-align: left"><audio src="subjective/paragraphs/271.wav" controls=""
               preload=""></audio></td>
         </tr>
         <tr>
@@ -773,8 +775,8 @@
             voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
             （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news
             from the front yesterday that the expedition had failed miserably.")</td>
-          <td style="text-align: left"><audio src="subjective/few-shot/male/33.wav" controls="" preload=""></audio></td>
-          <td style="text-align: left"><audio src="subjective/few-shot/male/style+emotion1.wav" controls=""
+          <td style="text-align: left"><audio src="subjective/ref_speaker/90_03_16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/paragraphs/92.wav" controls=""
               preload=""></audio></td>
         </tr>
         <tr>
@@ -803,15 +805,15 @@
             voice, "this. What on earth is going on? why are the officers and soldiers here?")<br />
             （sad）那少妇摇了摇头，道："昨日前线传来消息，说这次御驾亲征已然惨败。"(English: The young woman shook her head and said, "there was news
             from the front yesterday that the expedition had failed miserably.")</td>
-          <td style="text-align: left"><audio src="subjective/few-shot/female/46.wav" controls="" preload=""></audio>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/270_03_16.wav" controls="" preload=""></audio>
           </td>
-          <td style="text-align: left"><audio src="subjective/few-shot/female/style+emotion1.wav" controls=""
+          <td style="text-align: left"><audio src="subjective/paragraphs/272.wav" controls=""
               preload=""></audio></td>
         </tr>
 
 
       </tbody>
-    </table> -->
+    </table>
 
     <!-- <p><b>Short summary:</b> Given different speaker and emotion embedding during inference, the Speaker-mel gererator
       could provide emotionless speech with specific timbre, while the output of the Emotion-mel gererator contains the
